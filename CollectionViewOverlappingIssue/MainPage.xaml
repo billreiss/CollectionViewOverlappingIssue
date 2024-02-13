@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CollectionViewOverlappingIssue.MainPage">
+    <Grid RowDefinitions="auto,*">
+        <Button x:Name="populate" Clicked="populate_Clicked" Text="Populate header"/>
+        <CollectionView Grid.Row="1"  x:Name="cv" ItemsSource="{Binding Path=DataSource}">
+            <CollectionView.Header>
+                <Grid x:Name="header">
+                    <VerticalStackLayout x:Name="headerStack"
+                    Padding="10,0"
+                    Spacing="15" BackgroundColor="Pink">
+                        <Image
+                        Source="dotnet_bot.png"
+                        HeightRequest="185"
+                        Aspect="AspectFit"
+                        SemanticProperties.Description="dot net bot in a race car number eight" />
+                        <Label x:Name="headLine"
+                        Text="--"
+                        Style="{StaticResource Headline}"
+                        SemanticProperties.HeadingLevel="Level1" />
+
+                        <Label x:Name="subHeadLine"
+                        Text="--"
+                        Style="{StaticResource SubHeadline}"
+                        SemanticProperties.HeadingLevel="Level2"
+                        SemanticProperties.Description="Welcome to dot net Multi platform App U I" />
+                    </VerticalStackLayout>
+                </Grid>
+            </CollectionView.Header>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid Padding="10,5">
+                        <Label Text="{Binding .}"/>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </Grid>
+</ContentPage>
+
